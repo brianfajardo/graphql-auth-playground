@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "react-apollo";
+import { hashHistory } from "react-router";
 
 // Components
 import AuthForm from "./AuthForm";
@@ -14,6 +15,13 @@ class LoginForm extends React.Component {
   state = {
     errors: []
   };
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (!prevProps.data.user && this.props.data.user) {
+      // Check race condition where a user is currently logged in.
+      hashHistory.push("/dashboard");
+    }
+  }
 
   handleAuthSubmit = (email, password) => {
     this.props
@@ -40,4 +48,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default graphql(LOGIN)(LoginForm);
+export default graphql(GET_AUTHENTICATED_USER)(graphql(LOGIN)(LoginForm));
