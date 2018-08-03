@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react'
 
 class AuthForm extends React.Component {
   state = {
-    email: "",
-    password: ""
-  };
+    email: '',
+    password: ''
+  }
 
   handleInputChange = (input, event) => {
-    this.setState({ [input]: event.target.value });
-  };
+    this.setState({ [input]: event.target.value })
+  }
 
   handleFormSubmit = event => {
-    event.preventDefault();
-    this.props.onSubmit(this.state.email, this.state.password);
-  };
+    event.preventDefault()
+    this.props.onSubmit(this.state.email, this.state.password)
+  }
 
   render() {
     return (
@@ -25,7 +25,7 @@ class AuthForm extends React.Component {
               type="text"
               placeholder="Email"
               value={this.state.email}
-              onChange={e => this.handleInputChange("email", e)}
+              onChange={e => this.handleInputChange('email', e)}
             />
           </div>
           {/* Password input */}
@@ -34,12 +34,14 @@ class AuthForm extends React.Component {
               type="password"
               placeholder="Password"
               value={this.state.password}
-              onChange={e => this.handleInputChange("password", e)}
+              onChange={e => this.handleInputChange('password', e)}
             />
           </div>
           {/* Errors */}
           <div className="errors">
-            {this.props.errors.map(error => <div key={error}>{error}</div>)}
+            {this.props.errors.map(error => (
+              <div key={error}>{error}</div>
+            ))}
           </div>
           {/* Submit button */}
           <button type="submit" className="btn green">
@@ -47,8 +49,8 @@ class AuthForm extends React.Component {
           </button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default AuthForm;
+export default AuthForm

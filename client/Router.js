@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react'
 import {
   Router as ReactRouter,
   hashHistory,
   Route,
   IndexRoute
-} from "react-router";
+} from 'react-router'
 
-import App from "./components/App";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
-import Dashboard from "./components/Dashboard";
-import requireAuth from "./components/HOC/requireAuth";
+import App from './components/App'
+import LoginForm from './components/LoginForm'
+import SignUpForm from './components/SignUpForm'
+import Dashboard from './components/Dashboard'
+import requireAuth from './components/HOC/requireAuth'
 
 const Router = () => (
   <ReactRouter history={hashHistory}>
@@ -20,6 +20,6 @@ const Router = () => (
       <Route path="/dashboard" component={requireAuth(Dashboard)} />
     </Route>
   </ReactRouter>
-);
+)
 
-export default Router;
+export default Router

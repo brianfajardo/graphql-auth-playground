@@ -1,11 +1,8 @@
 {
-  "name": "users",
+  "name": "",
   "version": "1.0.0",
-  "description": "Starter pack for an auth-included graphql project",
-  "repository": {
-    "type": "git",
-    "url": "github.com/stephengrider"
-  },
+  "description": "",
+  "repository": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js --ignore client"
@@ -41,6 +38,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3",
+    "prettier": "^1.14.0"
   }
 }

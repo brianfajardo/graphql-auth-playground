@@ -1,15 +1,15 @@
-const graphql = require("graphql");
+const graphql = require('graphql')
 
 // Types
-const UserType = require("./types/user_type");
+const UserType = require('./types/user_type')
 
 // Services
-const Authentication = require("../services/auth");
+const Authentication = require('../services/auth')
 
-const { GraphQLObjectType, GraphQLString } = graphql;
+const { GraphQLObjectType, GraphQLString } = graphql
 
 const mutation = new GraphQLObjectType({
-  name: "Mutation",
+  name: 'Mutation',
   fields: {
     signup: {
       type: UserType,
@@ -22,7 +22,7 @@ const mutation = new GraphQLObjectType({
         }
       },
       resolve(parentValue, { email, password }, req) {
-        return Authentication.signup({ email, password, req });
+        return Authentication.signup({ email, password, req })
       }
     },
     login: {
@@ -36,16 +36,16 @@ const mutation = new GraphQLObjectType({
         }
       },
       resolve(parentValue, { email, password }, req) {
-        return Authentication.login({ email, password, req });
+        return Authentication.login({ email, password, req })
       }
     },
     logout: {
       type: UserType,
       resolve(parentValue, args, req) {
-        return Authentication.logout(req);
+        return Authentication.logout(req)
       }
     }
   }
-});
+})
 
-module.exports = mutation;
+module.exports = mutation

@@ -1,25 +1,25 @@
-import React from "react";
-import { graphql } from "react-apollo";
-import { Link } from "react-router";
+import React from 'react'
+import { graphql } from 'react-apollo'
+import { Link } from 'react-router'
 
 // Queries
-import GET_AUTHENTICATED_USER from "../queries/GetAuthenticatedUser";
+import GET_AUTHENTICATED_USER from '../queries/GetAuthenticatedUser'
 
 // Mutations
-import LOGOUT from "../mutations/Logout";
+import LOGOUT from '../mutations/Logout'
 
 class Header extends React.Component {
   handleLogout = () => {
     this.props.mutate({
       refetchQueries: [{ query: GET_AUTHENTICATED_USER }]
-    });
-  };
+    })
+  }
 
   renderButtons = () => {
-    const { loading, user } = this.props.data;
+    const { loading, user } = this.props.data
 
     if (loading) {
-      return <div />;
+      return <div />
     }
 
     if (user) {
@@ -27,7 +27,7 @@ class Header extends React.Component {
         <li>
           <a onClick={this.handleLogout}>Logout</a>
         </li>
-      );
+      )
     } else {
       return (
         <div>
@@ -38,13 +38,13 @@ class Header extends React.Component {
             <Link to="/login">Login</Link>
           </li>
         </div>
-      );
+      )
     }
-  };
+  }
 
   render() {
     if (this.props.data.loading) {
-      return <div>Loading...</div>;
+      return <div>Loading...</div>
     }
 
     return (
@@ -56,8 +56,8 @@ class Header extends React.Component {
           <ul className="right">{this.renderButtons()}</ul>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-export default graphql(LOGOUT)(graphql(GET_AUTHENTICATED_USER)(Header));
+export default graphql(LOGOUT)(graphql(GET_AUTHENTICATED_USER)(Header))
